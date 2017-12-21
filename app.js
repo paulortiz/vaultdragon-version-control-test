@@ -11,10 +11,8 @@ var routes = require('./api/routes/routes');
 var app = express();
 var port = 3000;
 
-console.log("--->>>>", config);
-
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Objectsdb', { useMongoClient: true });
+mongoose.connect(config.MONGO_URI, { useMongoClient: true });
 
 app.use(compression());
 app.use(helmet());
