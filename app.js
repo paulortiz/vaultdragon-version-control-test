@@ -9,7 +9,7 @@ var compression = require('compression'),
 var config = require('./env.json')[process.env.NODE_ENV || 'development'];
 var routes = require('./api/routes/routes');
 var app = express();
-var port = 80;
+var port = 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.MONGO_URI, { useMongoClient: true });
