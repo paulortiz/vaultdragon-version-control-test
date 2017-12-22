@@ -2,7 +2,7 @@ module.exports = function(app) {
     var controller = require('../controllers/objectsController');
 
     app.route('/object')
-        .get(controller.list_all_objects)
+        .get(controller.read_latest_object)
         .post(controller.create_a_object)
 
     app.route('/object/:key')

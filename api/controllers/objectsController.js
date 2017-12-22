@@ -3,13 +3,15 @@ var helper = require('../utils/helper');
 var moment = require('moment');
 var Objects = mongoose.model('Objects');
 
-exports.list_all_objects = function(req, res) {
+exports.read_latest_object = function(req, res) {
     try {
         var projection = {__v: false, _id : false};
-    
-        Objects.find({}, projection, function(err, object) {
+        var sort = {sort : { 'timestamp' : -1 }};
+
+        Objects.findOne({}, projection, sort, function(err, object) {
             if (err) res.send(err);
-            res.json(object);
+            var jsonResponse = getJsonFromObject(object);
+            res.json(jsonResponse);
         })
     } catch (err) {
         console.error("Failed to list all objects :: ", err);
